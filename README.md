@@ -7,7 +7,7 @@ and waits for them
 
 ```shell
 $ docker run -d --name mycontainer some-image-or-other
-$ docker run --link mycontainer:mycontainer waisbrot/wait
+$ docker run --link mycontainer:mycontainer janvoracek/docker-wait
 waiting for 172.17.0.105:5432  .  up!
 Everything is up
 ```
@@ -19,7 +19,7 @@ to hosts/ports that haven't been linked by Docker, you can provide the list in
 the `TARGETS` variable:
 
 ```shell
-$ docker run -e TARGETS=8.8.8.8:53,github.com:443 waisbrot/wait
+$ docker run -e TARGETS=8.8.8.8:53,github.com:443 janvoracek/docker-wait
 waiting for 8.8.8.8:53  .  up!
 waiting for github.com:443  .  up!
 Everything is up
@@ -28,7 +28,7 @@ Everything is up
 By default each connection attempt will bail after 30 seconds. You can specify how long to wait (in seconds) using the `TIMEOUT` env variable:
 
 ```shell
-$ docker run -e TARGETS=github.com:5432 -e TIMEOUT=2 waisbrot/wait
+$ docker run -e TARGETS=github.com:5432 -e TIMEOUT=2 janvoracek/docker-wait
 waiting for github.com:5432  ..  ERROR: unable to connect
 ```
 
